@@ -1,0 +1,420 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"99 ./DIO.h
+[; ;./DIO.h: 99: void DIO_voidInitPin(uint8 pin_num, uint8 Dir);
+[v _DIO_voidInitPin `(v ~T0 @X0 0 ef2`uc`uc ]
+"112
+[; ;./DIO.h: 112: uint8 DIO_U8ReadPinValue(uint8 pin_num);
+[v _DIO_U8ReadPinValue `(uc ~T0 @X0 0 ef1`uc ]
+"16 SWITCH.c
+[; ;SWITCH.c: 16: uint8 UPstate = 0;
+[v _UPstate `uc ~T0 @X0 1 e ]
+[i _UPstate
+-> -> 0 `i `uc
+]
+"17
+[; ;SWITCH.c: 17: uint8 UPpushed_flag = 0;
+[v _UPpushed_flag `uc ~T0 @X0 1 e ]
+[i _UPpushed_flag
+-> -> 0 `i `uc
+]
+"18
+[; ;SWITCH.c: 18: uint8 DOWNstate = 0;
+[v _DOWNstate `uc ~T0 @X0 1 e ]
+[i _DOWNstate
+-> -> 0 `i `uc
+]
+"19
+[; ;SWITCH.c: 19: uint8 DOWNpushed_flag = 0;
+[v _DOWNpushed_flag `uc ~T0 @X0 1 e ]
+[i _DOWNpushed_flag
+-> -> 0 `i `uc
+]
+"20
+[; ;SWITCH.c: 20: uint8 ON_OFFstate = 0;
+[v _ON_OFFstate `uc ~T0 @X0 1 e ]
+[i _ON_OFFstate
+-> -> 0 `i `uc
+]
+"21
+[; ;SWITCH.c: 21: uint8 ON_OFFpushed_flag = 0;
+[v _ON_OFFpushed_flag `uc ~T0 @X0 1 e ]
+[i _ON_OFFpushed_flag
+-> -> 0 `i `uc
+]
+"22
+[; ;SWITCH.c: 22: uint8 SWcounter = 0;
+[v _SWcounter `uc ~T0 @X0 1 e ]
+[i _SWcounter
+-> -> 0 `i `uc
+]
+"25
+[; ;SWITCH.c: 25: void sw_int(void) {
+[v _sw_int `(v ~T0 @X0 1 ef ]
+{
+[e :U _sw_int ]
+[f ]
+"26
+[; ;SWITCH.c: 26:     DIO_voidInitPin(10, 1);
+[e ( _DIO_voidInitPin (2 , -> -> 10 `i `uc -> -> 1 `i `uc ]
+"27
+[; ;SWITCH.c: 27:     DIO_voidInitPin(8, 1);
+[e ( _DIO_voidInitPin (2 , -> -> 8 `i `uc -> -> 1 `i `uc ]
+"28
+[; ;SWITCH.c: 28:     DIO_voidInitPin(9, 1);
+[e ( _DIO_voidInitPin (2 , -> -> 9 `i `uc -> -> 1 `i `uc ]
+"29
+[; ;SWITCH.c: 29: }
+[e :UE 1 ]
+}
+"32
+[; ;SWITCH.c: 32: void sw_voidtask(void) {
+[v _sw_voidtask `(v ~T0 @X0 1 ef ]
+{
+[e :U _sw_voidtask ]
+[f ]
+"34
+[; ;SWITCH.c: 34:     switch (UPstate) {
+[e $U 4  ]
+{
+"35
+[; ;SWITCH.c: 35:         case 0:
+[e :U 5 ]
+"36
+[; ;SWITCH.c: 36:             if (DIO_U8ReadPinValue(10) == 0) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 10 `i `uc `i -> 0 `i 6  ]
+{
+"37
+[; ;SWITCH.c: 37:                 UPstate = 1;
+[e = _UPstate -> -> 1 `i `uc ]
+"38
+[; ;SWITCH.c: 38:             }
+}
+[e :U 6 ]
+"39
+[; ;SWITCH.c: 39:             break;
+[e $U 3  ]
+"41
+[; ;SWITCH.c: 41:         case 1:
+[e :U 7 ]
+"42
+[; ;SWITCH.c: 42:             if (DIO_U8ReadPinValue(10) == 0) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 10 `i `uc `i -> 0 `i 8  ]
+{
+"43
+[; ;SWITCH.c: 43:                 SWcounter++;
+[e ++ _SWcounter -> -> 1 `i `uc ]
+"44
+[; ;SWITCH.c: 44:             }
+}
+[e :U 8 ]
+"45
+[; ;SWITCH.c: 45:             if (SWcounter >= 4) {
+[e $ ! >= -> _SWcounter `i -> 4 `i 9  ]
+{
+"46
+[; ;SWITCH.c: 46:                 SWcounter = 0;
+[e = _SWcounter -> -> 0 `i `uc ]
+"47
+[; ;SWITCH.c: 47:                 UPstate = 2;
+[e = _UPstate -> -> 2 `i `uc ]
+"48
+[; ;SWITCH.c: 48:             }
+}
+[e :U 9 ]
+"49
+[; ;SWITCH.c: 49:             break;
+[e $U 3  ]
+"50
+[; ;SWITCH.c: 50:         case 2:
+[e :U 10 ]
+"51
+[; ;SWITCH.c: 51:             UPpushed_flag = 1;
+[e = _UPpushed_flag -> -> 1 `i `uc ]
+"52
+[; ;SWITCH.c: 52:             if (DIO_U8ReadPinValue(10) == 1) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 10 `i `uc `i -> 1 `i 11  ]
+{
+"53
+[; ;SWITCH.c: 53:                 UPstate = 3;
+[e = _UPstate -> -> 3 `i `uc ]
+"54
+[; ;SWITCH.c: 54:             }
+}
+[e :U 11 ]
+"55
+[; ;SWITCH.c: 55:             break;
+[e $U 3  ]
+"56
+[; ;SWITCH.c: 56:         case 3:
+[e :U 12 ]
+"57
+[; ;SWITCH.c: 57:             if (DIO_U8ReadPinValue(10) == 1) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 10 `i `uc `i -> 1 `i 13  ]
+{
+"58
+[; ;SWITCH.c: 58:                 SWcounter++;
+[e ++ _SWcounter -> -> 1 `i `uc ]
+"59
+[; ;SWITCH.c: 59:             }
+}
+[e :U 13 ]
+"60
+[; ;SWITCH.c: 60:             if (SWcounter >= 4) {
+[e $ ! >= -> _SWcounter `i -> 4 `i 14  ]
+{
+"61
+[; ;SWITCH.c: 61:                 SWcounter = 0;
+[e = _SWcounter -> -> 0 `i `uc ]
+"62
+[; ;SWITCH.c: 62:                 UPstate = 0;
+[e = _UPstate -> -> 0 `i `uc ]
+"63
+[; ;SWITCH.c: 63:             }
+}
+[e :U 14 ]
+"64
+[; ;SWITCH.c: 64:             break;
+[e $U 3  ]
+"66
+[; ;SWITCH.c: 66:     }
+}
+[e $U 3  ]
+[e :U 4 ]
+[e [\ -> _UPstate `i , $ -> 0 `i 5
+ , $ -> 1 `i 7
+ , $ -> 2 `i 10
+ , $ -> 3 `i 12
+ 3 ]
+[e :U 3 ]
+"67
+[; ;SWITCH.c: 67:     switch (DOWNstate) {
+[e $U 16  ]
+{
+"68
+[; ;SWITCH.c: 68:         case 0:
+[e :U 17 ]
+"69
+[; ;SWITCH.c: 69:             if (DIO_U8ReadPinValue(8) == 0) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 8 `i `uc `i -> 0 `i 18  ]
+{
+"70
+[; ;SWITCH.c: 70:                 DOWNstate = 1;
+[e = _DOWNstate -> -> 1 `i `uc ]
+"71
+[; ;SWITCH.c: 71:             }
+}
+[e :U 18 ]
+"72
+[; ;SWITCH.c: 72:             break;
+[e $U 15  ]
+"74
+[; ;SWITCH.c: 74:         case 1:
+[e :U 19 ]
+"75
+[; ;SWITCH.c: 75:             if (DIO_U8ReadPinValue(8) == 0) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 8 `i `uc `i -> 0 `i 20  ]
+{
+"76
+[; ;SWITCH.c: 76:                 SWcounter++;
+[e ++ _SWcounter -> -> 1 `i `uc ]
+"77
+[; ;SWITCH.c: 77:             }
+}
+[e :U 20 ]
+"78
+[; ;SWITCH.c: 78:             if (SWcounter >= 4) {
+[e $ ! >= -> _SWcounter `i -> 4 `i 21  ]
+{
+"79
+[; ;SWITCH.c: 79:                 SWcounter = 0;
+[e = _SWcounter -> -> 0 `i `uc ]
+"80
+[; ;SWITCH.c: 80:                 DOWNstate = 2;
+[e = _DOWNstate -> -> 2 `i `uc ]
+"81
+[; ;SWITCH.c: 81:             }
+}
+[e :U 21 ]
+"82
+[; ;SWITCH.c: 82:             break;
+[e $U 15  ]
+"83
+[; ;SWITCH.c: 83:         case 2:
+[e :U 22 ]
+"84
+[; ;SWITCH.c: 84:             DOWNpushed_flag = 1;
+[e = _DOWNpushed_flag -> -> 1 `i `uc ]
+"85
+[; ;SWITCH.c: 85:             if (DIO_U8ReadPinValue(8) == 1) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 8 `i `uc `i -> 1 `i 23  ]
+{
+"86
+[; ;SWITCH.c: 86:                 DOWNstate = 3;
+[e = _DOWNstate -> -> 3 `i `uc ]
+"87
+[; ;SWITCH.c: 87:             }
+}
+[e :U 23 ]
+"88
+[; ;SWITCH.c: 88:             break;
+[e $U 15  ]
+"89
+[; ;SWITCH.c: 89:         case 3:
+[e :U 24 ]
+"90
+[; ;SWITCH.c: 90:             if (DIO_U8ReadPinValue(8) == 1) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 8 `i `uc `i -> 1 `i 25  ]
+{
+"91
+[; ;SWITCH.c: 91:                 SWcounter++;
+[e ++ _SWcounter -> -> 1 `i `uc ]
+"92
+[; ;SWITCH.c: 92:             }
+}
+[e :U 25 ]
+"93
+[; ;SWITCH.c: 93:             if (SWcounter >= 4) {
+[e $ ! >= -> _SWcounter `i -> 4 `i 26  ]
+{
+"94
+[; ;SWITCH.c: 94:                 SWcounter = 0;
+[e = _SWcounter -> -> 0 `i `uc ]
+"95
+[; ;SWITCH.c: 95:                 DOWNstate = 0;
+[e = _DOWNstate -> -> 0 `i `uc ]
+"96
+[; ;SWITCH.c: 96:             }
+}
+[e :U 26 ]
+"97
+[; ;SWITCH.c: 97:             break;
+[e $U 15  ]
+"99
+[; ;SWITCH.c: 99:     }
+}
+[e $U 15  ]
+[e :U 16 ]
+[e [\ -> _DOWNstate `i , $ -> 0 `i 17
+ , $ -> 1 `i 19
+ , $ -> 2 `i 22
+ , $ -> 3 `i 24
+ 15 ]
+[e :U 15 ]
+"100
+[; ;SWITCH.c: 100:     switch (ON_OFFstate) {
+[e $U 28  ]
+{
+"101
+[; ;SWITCH.c: 101:         case 0:
+[e :U 29 ]
+"102
+[; ;SWITCH.c: 102:             if (DIO_U8ReadPinValue(9) == 0) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 9 `i `uc `i -> 0 `i 30  ]
+{
+"103
+[; ;SWITCH.c: 103:                 ON_OFFstate = 1;
+[e = _ON_OFFstate -> -> 1 `i `uc ]
+"104
+[; ;SWITCH.c: 104:             }
+}
+[e :U 30 ]
+"105
+[; ;SWITCH.c: 105:             break;
+[e $U 27  ]
+"107
+[; ;SWITCH.c: 107:         case 1:
+[e :U 31 ]
+"108
+[; ;SWITCH.c: 108:             if (DIO_U8ReadPinValue(9) == 0) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 9 `i `uc `i -> 0 `i 32  ]
+{
+"109
+[; ;SWITCH.c: 109:                 SWcounter++;
+[e ++ _SWcounter -> -> 1 `i `uc ]
+"110
+[; ;SWITCH.c: 110:             }
+}
+[e :U 32 ]
+"111
+[; ;SWITCH.c: 111:             if (SWcounter >= 4) {
+[e $ ! >= -> _SWcounter `i -> 4 `i 33  ]
+{
+"112
+[; ;SWITCH.c: 112:                 SWcounter = 0;
+[e = _SWcounter -> -> 0 `i `uc ]
+"113
+[; ;SWITCH.c: 113:                 ON_OFFstate = 2;
+[e = _ON_OFFstate -> -> 2 `i `uc ]
+"114
+[; ;SWITCH.c: 114:             }
+}
+[e :U 33 ]
+"115
+[; ;SWITCH.c: 115:             break;
+[e $U 27  ]
+"116
+[; ;SWITCH.c: 116:         case 2:
+[e :U 34 ]
+"117
+[; ;SWITCH.c: 117:             ON_OFFpushed_flag = 1;
+[e = _ON_OFFpushed_flag -> -> 1 `i `uc ]
+"118
+[; ;SWITCH.c: 118:             if (DIO_U8ReadPinValue(9) == 1) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 9 `i `uc `i -> 1 `i 35  ]
+{
+"119
+[; ;SWITCH.c: 119:                 ON_OFFstate = 3;
+[e = _ON_OFFstate -> -> 3 `i `uc ]
+"120
+[; ;SWITCH.c: 120:             }
+}
+[e :U 35 ]
+"121
+[; ;SWITCH.c: 121:             break;
+[e $U 27  ]
+"122
+[; ;SWITCH.c: 122:         case 3:
+[e :U 36 ]
+"123
+[; ;SWITCH.c: 123:             if (DIO_U8ReadPinValue(9) == 1) {
+[e $ ! == -> ( _DIO_U8ReadPinValue (1 -> -> 9 `i `uc `i -> 1 `i 37  ]
+{
+"124
+[; ;SWITCH.c: 124:                 SWcounter++;
+[e ++ _SWcounter -> -> 1 `i `uc ]
+"125
+[; ;SWITCH.c: 125:             }
+}
+[e :U 37 ]
+"126
+[; ;SWITCH.c: 126:             if (SWcounter >= 4) {
+[e $ ! >= -> _SWcounter `i -> 4 `i 38  ]
+{
+"127
+[; ;SWITCH.c: 127:                 SWcounter = 0;
+[e = _SWcounter -> -> 0 `i `uc ]
+"128
+[; ;SWITCH.c: 128:                 ON_OFFstate = 0;
+[e = _ON_OFFstate -> -> 0 `i `uc ]
+"129
+[; ;SWITCH.c: 129:             }
+}
+[e :U 38 ]
+"130
+[; ;SWITCH.c: 130:             break;
+[e $U 27  ]
+"132
+[; ;SWITCH.c: 132:     }
+}
+[e $U 27  ]
+[e :U 28 ]
+[e [\ -> _ON_OFFstate `i , $ -> 0 `i 29
+ , $ -> 1 `i 31
+ , $ -> 2 `i 34
+ , $ -> 3 `i 36
+ 27 ]
+[e :U 27 ]
+"135
+[; ;SWITCH.c: 135: }
+[e :UE 2 ]
+}

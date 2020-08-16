@@ -1,0 +1,27 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"28 ./ADC.h
+[; ;./ADC.h: 28: uint16 ADC_Read(uint8 channel);
+[v _ADC_Read `(us ~T0 @X0 0 ef1`uc ]
+"14 TEMP.c
+[; ;TEMP.c: 14: uint8 temp;
+[v _temp `uc ~T0 @X0 1 e ]
+"17
+[; ;TEMP.c: 17: void UPDATE_TEMP(void) {
+[v _UPDATE_TEMP `(v ~T0 @X0 1 ef ]
+{
+[e :U _UPDATE_TEMP ]
+[f ]
+"18
+[; ;TEMP.c: 18:     uint16 val=0;
+[v _val `us ~T0 @X0 1 a ]
+[e = _val -> -> 0 `i `us ]
+"19
+[; ;TEMP.c: 19:     val=ADC_Read(2);
+[e = _val ( _ADC_Read (1 -> -> 2 `i `uc ]
+"20
+[; ;TEMP.c: 20:     temp=(uint8)(val*(500.0/1024.0));
+[e = _temp -> * -> -> _val `ui `d / .500.0 .1024.0 `uc ]
+"21
+[; ;TEMP.c: 21: }
+[e :UE 1 ]
+}

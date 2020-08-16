@@ -1,0 +1,499 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"25 ./EX_E2PROM.h
+[; ;./EX_E2PROM.h: 25: void EEPROM_Write(uint8 address, uint8 data);
+[v _EEPROM_Write `(v ~T0 @X0 0 ef2`uc`uc ]
+"35 ./DO.h
+[; ;./DO.h: 35: void DO_SetState(uint8 device ,uint8 state);
+[v _DO_SetState `(v ~T0 @X0 0 ef2`uc`uc ]
+"34 ./SSD.h
+[; ;./SSD.h: 34: void SSD_OFF(void);
+[v _SSD_OFF `(v ~T0 @X0 0 ef ]
+"34 Scheduler.c
+[; ;Scheduler.c: 34: extern uint8 ON_OFFpushed_flag;
+[v _ON_OFFpushed_flag `uc ~T0 @X0 0 e ]
+"31 ./EX_E2PROM.h
+[; ;./EX_E2PROM.h: 31: uint8 EEPROM_Read(uint8 address);
+[v _EEPROM_Read `(uc ~T0 @X0 0 ef1`uc ]
+"33 Scheduler.c
+[; ;Scheduler.c: 33: extern uint8 DOWNpushed_flag;
+[v _DOWNpushed_flag `uc ~T0 @X0 0 e ]
+"32
+[; ;Scheduler.c: 32: extern uint8 UPpushed_flag;
+[v _UPpushed_flag `uc ~T0 @X0 0 e ]
+"32 ./SWITCH.h
+[; ;./SWITCH.h: 32: void sw_voidtask(void);
+[v _sw_voidtask `(v ~T0 @X0 0 ef ]
+"22 ./TEMP.h
+[; ;./TEMP.h: 22: void UPDATE_TEMP(void);
+[v _UPDATE_TEMP `(v ~T0 @X0 0 ef ]
+"31 Scheduler.c
+[; ;Scheduler.c: 31: extern uint8 temp;
+[v _temp `uc ~T0 @X0 0 e ]
+"28 ./SSD.h
+[; ;./SSD.h: 28: void SSD_Display(uint8 display_no, uint8 number);
+[v _SSD_Display `(v ~T0 @X0 0 ef2`uc`uc ]
+"25 Scheduler.c
+[; ;Scheduler.c: 25: uint32 u32TickCount = 0;
+[v _u32TickCount `ul ~T0 @X0 1 e ]
+[i _u32TickCount
+-> -> -> 0 `i `l `ul
+]
+"26
+[; ;Scheduler.c: 26: uint32 u32SetmodeCount = 0;
+[v _u32SetmodeCount `ul ~T0 @X0 1 e ]
+[i _u32SetmodeCount
+-> -> -> 0 `i `l `ul
+]
+"27
+[; ;Scheduler.c: 27: uint8 temp_array[10];
+[v _temp_array `uc ~T0 @X0 -> 10 `i e ]
+"28
+[; ;Scheduler.c: 28: uint8 Settemp;
+[v _Settemp `uc ~T0 @X0 1 e ]
+"29
+[; ;Scheduler.c: 29: uint8 avgtemp;
+[v _avgtemp `uc ~T0 @X0 1 e ]
+"30
+[; ;Scheduler.c: 30: uint8 state, heaterstate;
+[v _state `uc ~T0 @X0 1 e ]
+[v _heaterstate `uc ~T0 @X0 1 e ]
+"37
+[; ;Scheduler.c: 37: void Sch_Init(void) {
+[v _Sch_Init `(v ~T0 @X0 1 ef ]
+{
+[e :U _Sch_Init ]
+[f ]
+"39
+[; ;Scheduler.c: 39:     Settemp = 60;
+[e = _Settemp -> -> 60 `i `uc ]
+"40
+[; ;Scheduler.c: 40:     state = 0;
+[e = _state -> -> 0 `i `uc ]
+"41
+[; ;Scheduler.c: 41:     EEPROM_Write(0x00, Settemp);
+[e ( _EEPROM_Write (2 , -> -> 0 `i `uc _Settemp ]
+"44
+[; ;Scheduler.c: 44: }
+[e :UE 1 ]
+}
+"47
+[; ;Scheduler.c: 47: void Sch_Start(void) {
+[v _Sch_Start `(v ~T0 @X0 1 ef ]
+{
+[e :U _Sch_Start ]
+[f ]
+"49
+[; ;Scheduler.c: 49:     uint8 OPtemp = 60;
+[v _OPtemp `uc ~T0 @X0 1 a ]
+[e = _OPtemp -> -> 60 `i `uc ]
+"50
+[; ;Scheduler.c: 50:     while (1) {
+[e :U 4 ]
+{
+"51
+[; ;Scheduler.c: 51:         switch (state) {
+[e $U 7  ]
+{
+"52
+[; ;Scheduler.c: 52:             case 0:
+[e :U 8 ]
+"53
+[; ;Scheduler.c: 53:                 DO_SetState(21, 0);
+[e ( _DO_SetState (2 , -> -> 21 `i `uc -> -> 0 `i `uc ]
+"54
+[; ;Scheduler.c: 54:                 DO_SetState(11, 0);
+[e ( _DO_SetState (2 , -> -> 11 `i `uc -> -> 0 `i `uc ]
+"55
+[; ;Scheduler.c: 55:                 DO_SetState(18, 0);
+[e ( _DO_SetState (2 , -> -> 18 `i `uc -> -> 0 `i `uc ]
+"56
+[; ;Scheduler.c: 56:                 SSD_OFF();
+[e ( _SSD_OFF ..  ]
+"57
+[; ;Scheduler.c: 57:                 if (ON_OFFpushed_flag == 1) {
+[e $ ! == -> _ON_OFFpushed_flag `i -> 1 `i 9  ]
+{
+"58
+[; ;Scheduler.c: 58:                     ON_OFFpushed_flag = 0;
+[e = _ON_OFFpushed_flag -> -> 0 `i `uc ]
+"59
+[; ;Scheduler.c: 59:                     state = 1;
+[e = _state -> -> 1 `i `uc ]
+"60
+[; ;Scheduler.c: 60:                 }
+}
+[e :U 9 ]
+"61
+[; ;Scheduler.c: 61:                 break;
+[e $U 6  ]
+"64
+[; ;Scheduler.c: 64:             case 1:
+[e :U 10 ]
+"65
+[; ;Scheduler.c: 65:                 OPtemp = EEPROM_Read(0x00);
+[e = _OPtemp ( _EEPROM_Read (1 -> -> 0 `i `uc ]
+"66
+[; ;Scheduler.c: 66:                 if (ON_OFFpushed_flag == 1) {
+[e $ ! == -> _ON_OFFpushed_flag `i -> 1 `i 11  ]
+{
+"67
+[; ;Scheduler.c: 67:                     ON_OFFpushed_flag = 0;
+[e = _ON_OFFpushed_flag -> -> 0 `i `uc ]
+"68
+[; ;Scheduler.c: 68:                     state = 0;
+[e = _state -> -> 0 `i `uc ]
+"69
+[; ;Scheduler.c: 69:                     heaterstate = 0;
+[e = _heaterstate -> -> 0 `i `uc ]
+"70
+[; ;Scheduler.c: 70:                 }
+}
+[e :U 11 ]
+"71
+[; ;Scheduler.c: 71:                 if (DOWNpushed_flag == 1 || UPpushed_flag == 1) {
+[e $ ! || == -> _DOWNpushed_flag `i -> 1 `i == -> _UPpushed_flag `i -> 1 `i 12  ]
+{
+"72
+[; ;Scheduler.c: 72:                     DOWNpushed_flag = 0;
+[e = _DOWNpushed_flag -> -> 0 `i `uc ]
+"73
+[; ;Scheduler.c: 73:                     UPpushed_flag = 0;
+[e = _UPpushed_flag -> -> 0 `i `uc ]
+"74
+[; ;Scheduler.c: 74:                     state = 2;
+[e = _state -> -> 2 `i `uc ]
+"75
+[; ;Scheduler.c: 75:                     u32SetmodeCount = 0;
+[e = _u32SetmodeCount -> -> -> 0 `i `l `ul ]
+"76
+[; ;Scheduler.c: 76:                     heaterstate = 0;
+[e = _heaterstate -> -> 0 `i `uc ]
+"77
+[; ;Scheduler.c: 77:                 }
+}
+[e :U 12 ]
+"79
+[; ;Scheduler.c: 79:                 if (avgtemp > ((OPtemp + 5))) {
+[e $ ! > -> _avgtemp `i + -> _OPtemp `i -> 5 `i 13  ]
+{
+"80
+[; ;Scheduler.c: 80:                     DO_SetState(21, 0);
+[e ( _DO_SetState (2 , -> -> 21 `i `uc -> -> 0 `i `uc ]
+"81
+[; ;Scheduler.c: 81:                     DO_SetState(18, 1);
+[e ( _DO_SetState (2 , -> -> 18 `i `uc -> -> 1 `i `uc ]
+"83
+[; ;Scheduler.c: 83:                     DO_SetState(11, 1);
+[e ( _DO_SetState (2 , -> -> 11 `i `uc -> -> 1 `i `uc ]
+"84
+[; ;Scheduler.c: 84:                     heaterstate = 0;
+[e = _heaterstate -> -> 0 `i `uc ]
+"85
+[; ;Scheduler.c: 85:                 }
+}
+[e :U 13 ]
+"87
+[; ;Scheduler.c: 87:                 if (avgtemp < ((OPtemp - 5))) {
+[e $ ! < -> _avgtemp `i - -> _OPtemp `i -> 5 `i 14  ]
+{
+"88
+[; ;Scheduler.c: 88:                     DO_SetState(21, 1);
+[e ( _DO_SetState (2 , -> -> 21 `i `uc -> -> 1 `i `uc ]
+"89
+[; ;Scheduler.c: 89:                     DO_SetState(18, 0);
+[e ( _DO_SetState (2 , -> -> 18 `i `uc -> -> 0 `i `uc ]
+"90
+[; ;Scheduler.c: 90:                     heaterstate = 1;
+[e = _heaterstate -> -> 1 `i `uc ]
+"91
+[; ;Scheduler.c: 91:                 }
+}
+[e :U 14 ]
+"93
+[; ;Scheduler.c: 93:                 break;
+[e $U 6  ]
+"94
+[; ;Scheduler.c: 94:             case 2:
+[e :U 15 ]
+"95
+[; ;Scheduler.c: 95:                 DO_SetState(21, 0);
+[e ( _DO_SetState (2 , -> -> 21 `i `uc -> -> 0 `i `uc ]
+"96
+[; ;Scheduler.c: 96:                 DO_SetState(11, 0);
+[e ( _DO_SetState (2 , -> -> 11 `i `uc -> -> 0 `i `uc ]
+"97
+[; ;Scheduler.c: 97:                 DO_SetState(18, 0);
+[e ( _DO_SetState (2 , -> -> 18 `i `uc -> -> 0 `i `uc ]
+"98
+[; ;Scheduler.c: 98:                 if (ON_OFFpushed_flag == 1) {
+[e $ ! == -> _ON_OFFpushed_flag `i -> 1 `i 16  ]
+{
+"99
+[; ;Scheduler.c: 99:                     ON_OFFpushed_flag = 0;
+[e = _ON_OFFpushed_flag -> -> 0 `i `uc ]
+"100
+[; ;Scheduler.c: 100:                     state = 0;
+[e = _state -> -> 0 `i `uc ]
+"101
+[; ;Scheduler.c: 101:                 }
+}
+[e :U 16 ]
+"102
+[; ;Scheduler.c: 102:                 if (DOWNpushed_flag == 1) {
+[e $ ! == -> _DOWNpushed_flag `i -> 1 `i 17  ]
+{
+"103
+[; ;Scheduler.c: 103:                     Settemp -= 5;
+[e =- _Settemp -> -> 5 `i `uc ]
+"104
+[; ;Scheduler.c: 104:                     if (Settemp < 35) {
+[e $ ! < -> _Settemp `i -> 35 `i 18  ]
+{
+"105
+[; ;Scheduler.c: 105:                         Settemp = 35;
+[e = _Settemp -> -> 35 `i `uc ]
+"106
+[; ;Scheduler.c: 106:                     }
+}
+[e :U 18 ]
+"107
+[; ;Scheduler.c: 107:                     DOWNpushed_flag = 0;
+[e = _DOWNpushed_flag -> -> 0 `i `uc ]
+"109
+[; ;Scheduler.c: 109:                     EEPROM_Write(0x00, Settemp);
+[e ( _EEPROM_Write (2 , -> -> 0 `i `uc _Settemp ]
+"111
+[; ;Scheduler.c: 111:                     u32SetmodeCount = 0;
+[e = _u32SetmodeCount -> -> -> 0 `i `l `ul ]
+"113
+[; ;Scheduler.c: 113:                 }
+}
+[e :U 17 ]
+"114
+[; ;Scheduler.c: 114:                 if (UPpushed_flag == 1) {
+[e $ ! == -> _UPpushed_flag `i -> 1 `i 19  ]
+{
+"115
+[; ;Scheduler.c: 115:                     Settemp += 5;
+[e =+ _Settemp -> -> 5 `i `uc ]
+"116
+[; ;Scheduler.c: 116:                     if (Settemp > 75) {
+[e $ ! > -> _Settemp `i -> 75 `i 20  ]
+{
+"117
+[; ;Scheduler.c: 117:                         Settemp = 75;
+[e = _Settemp -> -> 75 `i `uc ]
+"118
+[; ;Scheduler.c: 118:                     }
+}
+[e :U 20 ]
+"119
+[; ;Scheduler.c: 119:                     UPpushed_flag = 0;
+[e = _UPpushed_flag -> -> 0 `i `uc ]
+"121
+[; ;Scheduler.c: 121:                     EEPROM_Write(0x00, Settemp);
+[e ( _EEPROM_Write (2 , -> -> 0 `i `uc _Settemp ]
+"123
+[; ;Scheduler.c: 123:                     u32SetmodeCount = 0;
+[e = _u32SetmodeCount -> -> -> 0 `i `l `ul ]
+"124
+[; ;Scheduler.c: 124:                 }
+}
+[e :U 19 ]
+"125
+[; ;Scheduler.c: 125:                 if (u32SetmodeCount > 1000) {
+[e $ ! > _u32SetmodeCount -> -> -> 1000 `i `l `ul 21  ]
+{
+"127
+[; ;Scheduler.c: 127:                     u32SetmodeCount = 0;
+[e = _u32SetmodeCount -> -> -> 0 `i `l `ul ]
+"128
+[; ;Scheduler.c: 128:                     state = 1;
+[e = _state -> -> 1 `i `uc ]
+"130
+[; ;Scheduler.c: 130:                 }
+}
+[e :U 21 ]
+"131
+[; ;Scheduler.c: 131:                 break;
+[e $U 6  ]
+"134
+[; ;Scheduler.c: 134:         }
+}
+[e $U 6  ]
+[e :U 7 ]
+[e [\ -> _state `i , $ -> 0 `i 8
+ , $ -> 1 `i 10
+ , $ -> 2 `i 15
+ 6 ]
+[e :U 6 ]
+"135
+[; ;Scheduler.c: 135:     }
+}
+[e :U 3 ]
+[e $U 4  ]
+[e :U 5 ]
+"138
+[; ;Scheduler.c: 138: }
+[e :UE 2 ]
+}
+"141
+[; ;Scheduler.c: 141: void Sch_UpdateTick_Handler(void) {
+[v _Sch_UpdateTick_Handler `(v ~T0 @X0 1 ef ]
+{
+[e :U _Sch_UpdateTick_Handler ]
+[f ]
+"143
+[; ;Scheduler.c: 143:     u32TickCount++;
+[e ++ _u32TickCount -> -> -> 1 `i `l `ul ]
+"145
+[; ;Scheduler.c: 145:     if ((u32TickCount % 200 == 0)&&(heaterstate == 1)) {
+[e $ ! && == % _u32TickCount -> -> -> 200 `i `l `ul -> -> -> 0 `i `l `ul == -> _heaterstate `i -> 1 `i 23  ]
+{
+"146
+[; ;Scheduler.c: 146:         ((*((uint8*)(0x06))) ^= (1 <<(3)));
+[e =^ *U -> -> 6 `i `*uc -> << -> 1 `i -> 3 `i `uc ]
+"147
+[; ;Scheduler.c: 147:     }
+}
+[e :U 23 ]
+"149
+[; ;Scheduler.c: 149:     if (u32TickCount % 10 == 0) {
+[e $ ! == % _u32TickCount -> -> -> 10 `i `l `ul -> -> -> 0 `i `l `ul 24  ]
+{
+"150
+[; ;Scheduler.c: 150:         sw_voidtask();
+[e ( _sw_voidtask ..  ]
+"151
+[; ;Scheduler.c: 151:     }
+}
+[e :U 24 ]
+"153
+[; ;Scheduler.c: 153:     if (u32TickCount % 20 == 0) {
+[e $ ! == % _u32TickCount -> -> -> 20 `i `l `ul -> -> -> 0 `i `l `ul 25  ]
+{
+"154
+[; ;Scheduler.c: 154:         UPDATE_TEMP();
+[e ( _UPDATE_TEMP ..  ]
+"155
+[; ;Scheduler.c: 155:         for (int i = 0; i < 10; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 10 `i 26  ]
+[e $U 27  ]
+[e :U 26 ]
+{
+"156
+[; ;Scheduler.c: 156:             temp_array[i] = temp_array[i + 1];
+[e = *U + &U _temp_array * -> -> _i `ui `ux -> -> # *U &U _temp_array `ui `ux *U + &U _temp_array * -> -> + _i -> 1 `i `ui `ux -> -> # *U &U _temp_array `ui `ux ]
+"157
+[; ;Scheduler.c: 157:         }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 26  ]
+[e :U 27 ]
+}
+"158
+[; ;Scheduler.c: 158:         temp_array[9] = (uint8) temp;
+[e = *U + &U _temp_array * -> -> -> 9 `i `ui `ux -> -> # *U &U _temp_array `ui `ux _temp ]
+"159
+[; ;Scheduler.c: 159:         avgtemp = (temp_array[0] + temp_array[1] + temp_array[2] + temp_array[3] + temp_array[4] + temp_array[5] + temp_array[6] + temp_array[7] + temp_array[8] + temp_array[9]) / 10;
+[e = _avgtemp -> / + + + + + + + + + -> *U + &U _temp_array * -> -> -> 0 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 1 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 2 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 3 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 4 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 5 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 6 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 7 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 8 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> *U + &U _temp_array * -> -> -> 9 `i `ui `ux -> -> # *U &U _temp_array `ui `ux `i -> 10 `i `uc ]
+"160
+[; ;Scheduler.c: 160:     }
+}
+[e :U 25 ]
+"162
+[; ;Scheduler.c: 162:     switch (state) {
+[e $U 30  ]
+{
+"164
+[; ;Scheduler.c: 164:         case 1:
+[e :U 31 ]
+"165
+[; ;Scheduler.c: 165:             if (u32TickCount % 10 == 5) {
+[e $ ! == % _u32TickCount -> -> -> 10 `i `l `ul -> -> -> 5 `i `l `ul 32  ]
+{
+"166
+[; ;Scheduler.c: 166:                 SSD_Display(0, ((uint8) temp) / 10);
+[e ( _SSD_Display (2 , -> -> 0 `i `uc -> / -> _temp `i -> 10 `i `uc ]
+"167
+[; ;Scheduler.c: 167:             }
+}
+[e :U 32 ]
+"168
+[; ;Scheduler.c: 168:             if (u32TickCount % 10 == 0) {
+[e $ ! == % _u32TickCount -> -> -> 10 `i `l `ul -> -> -> 0 `i `l `ul 33  ]
+{
+"169
+[; ;Scheduler.c: 169:                 SSD_Display(1, ((uint8) temp) % 10);
+[e ( _SSD_Display (2 , -> -> 1 `i `uc -> % -> _temp `i -> 10 `i `uc ]
+"170
+[; ;Scheduler.c: 170:             }
+}
+[e :U 33 ]
+"172
+[; ;Scheduler.c: 172:             break;
+[e $U 29  ]
+"173
+[; ;Scheduler.c: 173:         case 2:
+[e :U 34 ]
+"174
+[; ;Scheduler.c: 174:             u32SetmodeCount++;
+[e ++ _u32SetmodeCount -> -> -> 1 `i `l `ul ]
+"175
+[; ;Scheduler.c: 175:             if (u32TickCount % 200 < 100) {
+[e $ ! < % _u32TickCount -> -> -> 200 `i `l `ul -> -> -> 100 `i `l `ul 35  ]
+{
+"176
+[; ;Scheduler.c: 176:                 if (u32TickCount % 10 == 5) {
+[e $ ! == % _u32TickCount -> -> -> 10 `i `l `ul -> -> -> 5 `i `l `ul 36  ]
+{
+"177
+[; ;Scheduler.c: 177:                     SSD_Display(0, ((uint8) Settemp) / 10);
+[e ( _SSD_Display (2 , -> -> 0 `i `uc -> / -> _Settemp `i -> 10 `i `uc ]
+"178
+[; ;Scheduler.c: 178:                 }
+}
+[e :U 36 ]
+"179
+[; ;Scheduler.c: 179:                 if (u32TickCount % 10 == 0) {
+[e $ ! == % _u32TickCount -> -> -> 10 `i `l `ul -> -> -> 0 `i `l `ul 37  ]
+{
+"180
+[; ;Scheduler.c: 180:                     SSD_Display(1, ((uint8) Settemp) % 10);
+[e ( _SSD_Display (2 , -> -> 1 `i `uc -> % -> _Settemp `i -> 10 `i `uc ]
+"181
+[; ;Scheduler.c: 181:                 }
+}
+[e :U 37 ]
+"182
+[; ;Scheduler.c: 182:             } else {
+}
+[e $U 38  ]
+[e :U 35 ]
+{
+"183
+[; ;Scheduler.c: 183:                 SSD_OFF();
+[e ( _SSD_OFF ..  ]
+"184
+[; ;Scheduler.c: 184:             }
+}
+[e :U 38 ]
+"185
+[; ;Scheduler.c: 185:             break;
+[e $U 29  ]
+"187
+[; ;Scheduler.c: 187:     }
+}
+[e $U 29  ]
+[e :U 30 ]
+[e [\ -> _state `i , $ -> 1 `i 31
+ , $ -> 2 `i 34
+ 29 ]
+[e :U 29 ]
+"191
+[; ;Scheduler.c: 191: }
+[e :UE 22 ]
+}

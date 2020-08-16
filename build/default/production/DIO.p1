@@ -1,0 +1,608 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"15 DIO.c
+[; ;DIO.c: 15: void DIO_voidInitPort(uint8 Port, uint8 Dir) {
+[v _DIO_voidInitPort `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _DIO_voidInitPort ]
+[v _Port `uc ~T0 @X0 1 r1 ]
+[v _Dir `uc ~T0 @X0 1 r2 ]
+[f ]
+"16
+[; ;DIO.c: 16:     switch (Port) {
+[e $U 3  ]
+{
+"17
+[; ;DIO.c: 17:         case 0:
+[e :U 4 ]
+"18
+[; ;DIO.c: 18:             if (Dir == 1) {
+[e $ ! == -> _Dir `i -> 1 `i 5  ]
+{
+"19
+[; ;DIO.c: 19:                 (*((uint8*)(0x85))|=0xFF);
+[e =| *U -> -> 133 `i `*uc -> -> 255 `i `uc ]
+"20
+[; ;DIO.c: 20:             }
+}
+[e :U 5 ]
+"21
+[; ;DIO.c: 21:             if (Dir == 0) {
+[e $ ! == -> _Dir `i -> 0 `i 6  ]
+{
+"22
+[; ;DIO.c: 22:                 (*((uint8*)(0x85))&=0x00);
+[e =& *U -> -> 133 `i `*uc -> -> 0 `i `uc ]
+"23
+[; ;DIO.c: 23:             }
+}
+[e :U 6 ]
+"24
+[; ;DIO.c: 24:             break;
+[e $U 2  ]
+"25
+[; ;DIO.c: 25:         case 1:
+[e :U 7 ]
+"26
+[; ;DIO.c: 26:             if (Dir == 1) {
+[e $ ! == -> _Dir `i -> 1 `i 8  ]
+{
+"27
+[; ;DIO.c: 27:                 (*((uint8*)(0x86))|=0xFF);
+[e =| *U -> -> 134 `i `*uc -> -> 255 `i `uc ]
+"28
+[; ;DIO.c: 28:             }
+}
+[e :U 8 ]
+"29
+[; ;DIO.c: 29:             if (Dir == 0) {
+[e $ ! == -> _Dir `i -> 0 `i 9  ]
+{
+"30
+[; ;DIO.c: 30:                 (*((uint8*)(0x86))&=0x00);
+[e =& *U -> -> 134 `i `*uc -> -> 0 `i `uc ]
+"31
+[; ;DIO.c: 31:             }
+}
+[e :U 9 ]
+"32
+[; ;DIO.c: 32:             break;
+[e $U 2  ]
+"33
+[; ;DIO.c: 33:         case 2:
+[e :U 10 ]
+"34
+[; ;DIO.c: 34:             if (Dir == 1) {
+[e $ ! == -> _Dir `i -> 1 `i 11  ]
+{
+"35
+[; ;DIO.c: 35:                 (*((uint8*)(0x87))|=0xFF);
+[e =| *U -> -> 135 `i `*uc -> -> 255 `i `uc ]
+"36
+[; ;DIO.c: 36:             }
+}
+[e :U 11 ]
+"37
+[; ;DIO.c: 37:             if (Dir == 0) {
+[e $ ! == -> _Dir `i -> 0 `i 12  ]
+{
+"38
+[; ;DIO.c: 38:                 (*((uint8*)(0x87))&=0x00);
+[e =& *U -> -> 135 `i `*uc -> -> 0 `i `uc ]
+"39
+[; ;DIO.c: 39:             }
+}
+[e :U 12 ]
+"40
+[; ;DIO.c: 40:             break;
+[e $U 2  ]
+"41
+[; ;DIO.c: 41:         case 3:
+[e :U 13 ]
+"42
+[; ;DIO.c: 42:             if (Dir == 1) {
+[e $ ! == -> _Dir `i -> 1 `i 14  ]
+{
+"43
+[; ;DIO.c: 43:                 (*((uint8*)(0x88))|=0xFF);
+[e =| *U -> -> 136 `i `*uc -> -> 255 `i `uc ]
+"44
+[; ;DIO.c: 44:             }
+}
+[e :U 14 ]
+"45
+[; ;DIO.c: 45:             if (Dir == 0) {
+[e $ ! == -> _Dir `i -> 0 `i 15  ]
+{
+"46
+[; ;DIO.c: 46:                 (*((uint8*)(0x88))&=0x00);
+[e =& *U -> -> 136 `i `*uc -> -> 0 `i `uc ]
+"47
+[; ;DIO.c: 47:             }
+}
+[e :U 15 ]
+"48
+[; ;DIO.c: 48:             break;
+[e $U 2  ]
+"49
+[; ;DIO.c: 49:         case 4:
+[e :U 16 ]
+"50
+[; ;DIO.c: 50:             if (Dir == 1) {
+[e $ ! == -> _Dir `i -> 1 `i 17  ]
+{
+"51
+[; ;DIO.c: 51:                 (*((uint8*)(0x89))|=0xFF);
+[e =| *U -> -> 137 `i `*uc -> -> 255 `i `uc ]
+"52
+[; ;DIO.c: 52:             }
+}
+[e :U 17 ]
+"53
+[; ;DIO.c: 53:             if (Dir == 0) {
+[e $ ! == -> _Dir `i -> 0 `i 18  ]
+{
+"54
+[; ;DIO.c: 54:                 (*((uint8*)(0x89))&=0x00);
+[e =& *U -> -> 137 `i `*uc -> -> 0 `i `uc ]
+"55
+[; ;DIO.c: 55:             }
+}
+[e :U 18 ]
+"56
+[; ;DIO.c: 56:             break;
+[e $U 2  ]
+"57
+[; ;DIO.c: 57:     }
+}
+[e $U 2  ]
+[e :U 3 ]
+[e [\ -> _Port `i , $ -> 0 `i 4
+ , $ -> 1 `i 7
+ , $ -> 2 `i 10
+ , $ -> 3 `i 13
+ , $ -> 4 `i 16
+ 2 ]
+[e :U 2 ]
+"58
+[; ;DIO.c: 58: }
+[e :UE 1 ]
+}
+"61
+[; ;DIO.c: 61: void DIO_voidWritePortValue(uint8 Port, uint8 value) {
+[v _DIO_voidWritePortValue `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _DIO_voidWritePortValue ]
+[v _Port `uc ~T0 @X0 1 r1 ]
+[v _value `uc ~T0 @X0 1 r2 ]
+[f ]
+"62
+[; ;DIO.c: 62:     switch (Port) {
+[e $U 21  ]
+{
+"63
+[; ;DIO.c: 63:         case 0:
+[e :U 22 ]
+"64
+[; ;DIO.c: 64:             *((uint8*)(0x05)) = value;
+[e = *U -> -> 5 `i `*uc _value ]
+"65
+[; ;DIO.c: 65:             break;
+[e $U 20  ]
+"66
+[; ;DIO.c: 66:         case 1:
+[e :U 23 ]
+"67
+[; ;DIO.c: 67:             *((uint8*)(0x06)) = value;
+[e = *U -> -> 6 `i `*uc _value ]
+"68
+[; ;DIO.c: 68:             break;
+[e $U 20  ]
+"69
+[; ;DIO.c: 69:         case 2:
+[e :U 24 ]
+"70
+[; ;DIO.c: 70:             *((uint8*)(0x07)) = value;
+[e = *U -> -> 7 `i `*uc _value ]
+"71
+[; ;DIO.c: 71:             break;
+[e $U 20  ]
+"72
+[; ;DIO.c: 72:         case 3:
+[e :U 25 ]
+"73
+[; ;DIO.c: 73:             *((uint8*)(0x08)) = value;
+[e = *U -> -> 8 `i `*uc _value ]
+"74
+[; ;DIO.c: 74:             break;
+[e $U 20  ]
+"75
+[; ;DIO.c: 75:         case 4:
+[e :U 26 ]
+"76
+[; ;DIO.c: 76:             *((uint8*)(0x09)) = value;
+[e = *U -> -> 9 `i `*uc _value ]
+"77
+[; ;DIO.c: 77:             break;
+[e $U 20  ]
+"78
+[; ;DIO.c: 78:     }
+}
+[e $U 20  ]
+[e :U 21 ]
+[e [\ -> _Port `i , $ -> 0 `i 22
+ , $ -> 1 `i 23
+ , $ -> 2 `i 24
+ , $ -> 3 `i 25
+ , $ -> 4 `i 26
+ 20 ]
+[e :U 20 ]
+"79
+[; ;DIO.c: 79: }
+[e :UE 19 ]
+}
+"82
+[; ;DIO.c: 82: uint8 DIO_U8ReadPortValue(uint8 Port) {
+[v _DIO_U8ReadPortValue `(uc ~T0 @X0 1 ef1`uc ]
+{
+[e :U _DIO_U8ReadPortValue ]
+[v _Port `uc ~T0 @X0 1 r1 ]
+[f ]
+"83
+[; ;DIO.c: 83:     uint8 port;
+[v _port `uc ~T0 @X0 1 a ]
+"84
+[; ;DIO.c: 84:     switch (Port) {
+[e $U 29  ]
+{
+"85
+[; ;DIO.c: 85:         case 0:
+[e :U 30 ]
+"86
+[; ;DIO.c: 86:             port = (*((uint8*)(0x05))&0xFF);
+[e = _port -> & -> *U -> -> 5 `i `*uc `i -> 255 `i `uc ]
+"87
+[; ;DIO.c: 87:             break;
+[e $U 28  ]
+"88
+[; ;DIO.c: 88:         case 1:
+[e :U 31 ]
+"89
+[; ;DIO.c: 89:             port = (*((uint8*)(0x06))&0xFF);
+[e = _port -> & -> *U -> -> 6 `i `*uc `i -> 255 `i `uc ]
+"90
+[; ;DIO.c: 90:             break;
+[e $U 28  ]
+"91
+[; ;DIO.c: 91:         case 2:
+[e :U 32 ]
+"92
+[; ;DIO.c: 92:             port = (*((uint8*)(0x07))&0xFF);
+[e = _port -> & -> *U -> -> 7 `i `*uc `i -> 255 `i `uc ]
+"93
+[; ;DIO.c: 93:             break;
+[e $U 28  ]
+"94
+[; ;DIO.c: 94:         case 3:
+[e :U 33 ]
+"95
+[; ;DIO.c: 95:             port = (*((uint8*)(0x08))&0xFF);
+[e = _port -> & -> *U -> -> 8 `i `*uc `i -> 255 `i `uc ]
+"96
+[; ;DIO.c: 96:             break;
+[e $U 28  ]
+"97
+[; ;DIO.c: 97:         case 4:
+[e :U 34 ]
+"98
+[; ;DIO.c: 98:             port = (*((uint8*)(0x09))&0xFF);
+[e = _port -> & -> *U -> -> 9 `i `*uc `i -> 255 `i `uc ]
+"99
+[; ;DIO.c: 99:             break;
+[e $U 28  ]
+"100
+[; ;DIO.c: 100:     }
+}
+[e $U 28  ]
+[e :U 29 ]
+[e [\ -> _Port `i , $ -> 0 `i 30
+ , $ -> 1 `i 31
+ , $ -> 2 `i 32
+ , $ -> 3 `i 33
+ , $ -> 4 `i 34
+ 28 ]
+[e :U 28 ]
+"101
+[; ;DIO.c: 101:     return port;
+[e ) _port ]
+[e $UE 27  ]
+"102
+[; ;DIO.c: 102: }
+[e :UE 27 ]
+}
+"105
+[; ;DIO.c: 105: void DIO_voidInitPin(uint8 pin_num, uint8 Dir) {
+[v _DIO_voidInitPin `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _DIO_voidInitPin ]
+[v _pin_num `uc ~T0 @X0 1 r1 ]
+[v _Dir `uc ~T0 @X0 1 r2 ]
+[f ]
+"106
+[; ;DIO.c: 106:     switch (Dir) {
+[e $U 37  ]
+{
+"107
+[; ;DIO.c: 107:         case 1:
+[e :U 38 ]
+"108
+[; ;DIO.c: 108:             if ((pin_num >= 0)&&(pin_num < 8)) {
+[e $ ! && >= -> _pin_num `i -> 0 `i < -> _pin_num `i -> 8 `i 39  ]
+{
+"109
+[; ;DIO.c: 109:                 ((*((uint8*)(0x85))) |= (1 << (pin_num % 8)));
+[e =| *U -> -> 133 `i `*uc -> << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"110
+[; ;DIO.c: 110:             }
+}
+[e :U 39 ]
+"111
+[; ;DIO.c: 111:             if ((pin_num >= 8)&&(pin_num < 16)) {
+[e $ ! && >= -> _pin_num `i -> 8 `i < -> _pin_num `i -> 16 `i 40  ]
+{
+"112
+[; ;DIO.c: 112:                 ((*((uint8*)(0x86))) |= (1 << (pin_num % 8)));
+[e =| *U -> -> 134 `i `*uc -> << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"113
+[; ;DIO.c: 113:             }
+}
+[e :U 40 ]
+"114
+[; ;DIO.c: 114:             if ((pin_num >= 16)&&(pin_num < 24)) {
+[e $ ! && >= -> _pin_num `i -> 16 `i < -> _pin_num `i -> 24 `i 41  ]
+{
+"115
+[; ;DIO.c: 115:                 ((*((uint8*)(0x87))) |= (1 << (pin_num % 8)));
+[e =| *U -> -> 135 `i `*uc -> << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"116
+[; ;DIO.c: 116:             }
+}
+[e :U 41 ]
+"117
+[; ;DIO.c: 117:             if ((pin_num >= 24)&&(pin_num < 32)) {
+[e $ ! && >= -> _pin_num `i -> 24 `i < -> _pin_num `i -> 32 `i 42  ]
+{
+"118
+[; ;DIO.c: 118:                 ((*((uint8*)(0x88))) |= (1 << (pin_num % 8)));
+[e =| *U -> -> 136 `i `*uc -> << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"119
+[; ;DIO.c: 119:             }
+}
+[e :U 42 ]
+"120
+[; ;DIO.c: 120:             if ((pin_num >= 32)&&(pin_num <= 34)) {
+[e $ ! && >= -> _pin_num `i -> 32 `i <= -> _pin_num `i -> 34 `i 43  ]
+{
+"121
+[; ;DIO.c: 121:                 ((*((uint8*)(0x89))) |= (1 << (pin_num % 8)));
+[e =| *U -> -> 137 `i `*uc -> << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"122
+[; ;DIO.c: 122:             }
+}
+[e :U 43 ]
+"123
+[; ;DIO.c: 123:             break;
+[e $U 36  ]
+"124
+[; ;DIO.c: 124:         case 0:
+[e :U 44 ]
+"125
+[; ;DIO.c: 125:             if ((pin_num >= 0)&&(pin_num < 8)) {
+[e $ ! && >= -> _pin_num `i -> 0 `i < -> _pin_num `i -> 8 `i 45  ]
+{
+"126
+[; ;DIO.c: 126:                 (*((uint8*)(0x85)) &= ~(1 << pin_num % 8));
+[e =& *U -> -> 133 `i `*uc -> ~ << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"127
+[; ;DIO.c: 127:             }
+}
+[e :U 45 ]
+"128
+[; ;DIO.c: 128:             if ((pin_num >= 8)&&(pin_num < 16)) {
+[e $ ! && >= -> _pin_num `i -> 8 `i < -> _pin_num `i -> 16 `i 46  ]
+{
+"129
+[; ;DIO.c: 129:                 (*((uint8*)(0x86)) &= ~(1 << pin_num % 8));
+[e =& *U -> -> 134 `i `*uc -> ~ << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"130
+[; ;DIO.c: 130:             }
+}
+[e :U 46 ]
+"131
+[; ;DIO.c: 131:             if ((pin_num >= 16)&&(pin_num < 24)) {
+[e $ ! && >= -> _pin_num `i -> 16 `i < -> _pin_num `i -> 24 `i 47  ]
+{
+"132
+[; ;DIO.c: 132:                 (*((uint8*)(0x87)) &= ~(1 << pin_num % 8));
+[e =& *U -> -> 135 `i `*uc -> ~ << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"133
+[; ;DIO.c: 133:             }
+}
+[e :U 47 ]
+"134
+[; ;DIO.c: 134:             if ((pin_num >= 24)&&(pin_num < 32)) {
+[e $ ! && >= -> _pin_num `i -> 24 `i < -> _pin_num `i -> 32 `i 48  ]
+{
+"135
+[; ;DIO.c: 135:                 (*((uint8*)(0x88)) &= ~(1 << pin_num % 8));
+[e =& *U -> -> 136 `i `*uc -> ~ << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"136
+[; ;DIO.c: 136:             }
+}
+[e :U 48 ]
+"137
+[; ;DIO.c: 137:             if ((pin_num >= 32)&&(pin_num <= 34)) {
+[e $ ! && >= -> _pin_num `i -> 32 `i <= -> _pin_num `i -> 34 `i 49  ]
+{
+"138
+[; ;DIO.c: 138:                 (*((uint8*)(0x89)) &= ~(1 << pin_num % 8));
+[e =& *U -> -> 137 `i `*uc -> ~ << -> 1 `i % -> _pin_num `i -> 8 `i `uc ]
+"139
+[; ;DIO.c: 139:             }
+}
+[e :U 49 ]
+"140
+[; ;DIO.c: 140:             break;
+[e $U 36  ]
+"141
+[; ;DIO.c: 141:     }
+}
+[e $U 36  ]
+[e :U 37 ]
+[e [\ -> _Dir `i , $ -> 1 `i 38
+ , $ -> 0 `i 44
+ 36 ]
+[e :U 36 ]
+"143
+[; ;DIO.c: 143: }
+[e :UE 35 ]
+}
+"146
+[; ;DIO.c: 146: void DIO_voidWritePinValue(uint8 pin_num, uint8 value) {
+[v _DIO_voidWritePinValue `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _DIO_voidWritePinValue ]
+[v _pin_num `uc ~T0 @X0 1 r1 ]
+[v _value `uc ~T0 @X0 1 r2 ]
+[f ]
+"147
+[; ;DIO.c: 147:     if ((pin_num >= 0)&&(pin_num < 8)) {
+[e $ ! && >= -> _pin_num `i -> 0 `i < -> _pin_num `i -> 8 `i 51  ]
+{
+"148
+[; ;DIO.c: 148:         ((*((uint8*)(0x05))) = (((*((uint8*)(0x05))) & ( ~(1 << (pin_num % 8))))|(value << pin_num % 8)));
+[e = *U -> -> 5 `i `*uc -> | & -> *U -> -> 5 `i `*uc `i ~ << -> 1 `i % -> _pin_num `i -> 8 `i << -> _value `i % -> _pin_num `i -> 8 `i `uc ]
+"149
+[; ;DIO.c: 149:     }
+}
+[e :U 51 ]
+"150
+[; ;DIO.c: 150:     if ((pin_num >= 8)&&(pin_num < 16)) {
+[e $ ! && >= -> _pin_num `i -> 8 `i < -> _pin_num `i -> 16 `i 52  ]
+{
+"151
+[; ;DIO.c: 151:         ((*((uint8*)(0x06))) = (((*((uint8*)(0x06))) & ( ~(1 << (pin_num % 8))))|(value << pin_num % 8)));
+[e = *U -> -> 6 `i `*uc -> | & -> *U -> -> 6 `i `*uc `i ~ << -> 1 `i % -> _pin_num `i -> 8 `i << -> _value `i % -> _pin_num `i -> 8 `i `uc ]
+"152
+[; ;DIO.c: 152:     }
+}
+[e :U 52 ]
+"153
+[; ;DIO.c: 153:     if ((pin_num >= 16)&&(pin_num < 24)) {
+[e $ ! && >= -> _pin_num `i -> 16 `i < -> _pin_num `i -> 24 `i 53  ]
+{
+"154
+[; ;DIO.c: 154:         ((*((uint8*)(0x07))) = (((*((uint8*)(0x07))) & ( ~(1 << (pin_num % 8))))|(value << pin_num % 8)));
+[e = *U -> -> 7 `i `*uc -> | & -> *U -> -> 7 `i `*uc `i ~ << -> 1 `i % -> _pin_num `i -> 8 `i << -> _value `i % -> _pin_num `i -> 8 `i `uc ]
+"155
+[; ;DIO.c: 155:     }
+}
+[e :U 53 ]
+"156
+[; ;DIO.c: 156:     if ((pin_num >= 24)&&(pin_num < 32)) {
+[e $ ! && >= -> _pin_num `i -> 24 `i < -> _pin_num `i -> 32 `i 54  ]
+{
+"157
+[; ;DIO.c: 157:         ((*((uint8*)(0x08))) = (((*((uint8*)(0x08))) & ( ~(1 << (pin_num % 8))))|(value << pin_num % 8)));
+[e = *U -> -> 8 `i `*uc -> | & -> *U -> -> 8 `i `*uc `i ~ << -> 1 `i % -> _pin_num `i -> 8 `i << -> _value `i % -> _pin_num `i -> 8 `i `uc ]
+"158
+[; ;DIO.c: 158:     }
+}
+[e :U 54 ]
+"159
+[; ;DIO.c: 159:     if ((pin_num >= 32)&&(pin_num <= 34)) {
+[e $ ! && >= -> _pin_num `i -> 32 `i <= -> _pin_num `i -> 34 `i 55  ]
+{
+"160
+[; ;DIO.c: 160:         ((*((uint8*)(0x09))) = (((*((uint8*)(0x09))) & ( ~(1 << (pin_num % 8))))|(value << pin_num % 8)));
+[e = *U -> -> 9 `i `*uc -> | & -> *U -> -> 9 `i `*uc `i ~ << -> 1 `i % -> _pin_num `i -> 8 `i << -> _value `i % -> _pin_num `i -> 8 `i `uc ]
+"161
+[; ;DIO.c: 161:     }
+}
+[e :U 55 ]
+"162
+[; ;DIO.c: 162: }
+[e :UE 50 ]
+}
+"165
+[; ;DIO.c: 165: uint8 DIO_U8ReadPinValue(uint8 pin_num) {
+[v _DIO_U8ReadPinValue `(uc ~T0 @X0 1 ef1`uc ]
+{
+[e :U _DIO_U8ReadPinValue ]
+[v _pin_num `uc ~T0 @X0 1 r1 ]
+[f ]
+"166
+[; ;DIO.c: 166:     uint8 pin;
+[v _pin `uc ~T0 @X0 1 a ]
+"167
+[; ;DIO.c: 167:     if ((pin_num >= 0)&&(pin_num < 8)) {
+[e $ ! && >= -> _pin_num `i -> 0 `i < -> _pin_num `i -> 8 `i 57  ]
+{
+"168
+[; ;DIO.c: 168:         pin = (((*((uint8*)(0x05)) >> pin_num % 8) & (1)));
+[e = _pin -> & >> -> *U -> -> 5 `i `*uc `i % -> _pin_num `i -> 8 `i -> 1 `i `uc ]
+"169
+[; ;DIO.c: 169:     }
+}
+[e :U 57 ]
+"170
+[; ;DIO.c: 170:     if ((pin_num >= 8)&&(pin_num < 16)) {
+[e $ ! && >= -> _pin_num `i -> 8 `i < -> _pin_num `i -> 16 `i 58  ]
+{
+"171
+[; ;DIO.c: 171:         pin = (((*((uint8*)(0x06)) >> pin_num % 8) & (1)));
+[e = _pin -> & >> -> *U -> -> 6 `i `*uc `i % -> _pin_num `i -> 8 `i -> 1 `i `uc ]
+"172
+[; ;DIO.c: 172:     }
+}
+[e :U 58 ]
+"173
+[; ;DIO.c: 173:     if ((pin_num >= 16)&&(pin_num < 24)) {
+[e $ ! && >= -> _pin_num `i -> 16 `i < -> _pin_num `i -> 24 `i 59  ]
+{
+"174
+[; ;DIO.c: 174:         pin = (((*((uint8*)(0x07)) >> pin_num % 8) & (1)));
+[e = _pin -> & >> -> *U -> -> 7 `i `*uc `i % -> _pin_num `i -> 8 `i -> 1 `i `uc ]
+"175
+[; ;DIO.c: 175:     }
+}
+[e :U 59 ]
+"176
+[; ;DIO.c: 176:     if ((pin_num >= 24)&&(pin_num < 32)) {
+[e $ ! && >= -> _pin_num `i -> 24 `i < -> _pin_num `i -> 32 `i 60  ]
+{
+"177
+[; ;DIO.c: 177:         pin = (((*((uint8*)(0x08)) >> pin_num % 8) & (1)));
+[e = _pin -> & >> -> *U -> -> 8 `i `*uc `i % -> _pin_num `i -> 8 `i -> 1 `i `uc ]
+"178
+[; ;DIO.c: 178:     }
+}
+[e :U 60 ]
+"179
+[; ;DIO.c: 179:     if ((pin_num >= 32)&&(pin_num <= 34)) {
+[e $ ! && >= -> _pin_num `i -> 32 `i <= -> _pin_num `i -> 34 `i 61  ]
+{
+"180
+[; ;DIO.c: 180:         pin = (((*((uint8*)(0x09)) >> pin_num % 8) & (1)));
+[e = _pin -> & >> -> *U -> -> 9 `i `*uc `i % -> _pin_num `i -> 8 `i -> 1 `i `uc ]
+"181
+[; ;DIO.c: 181:     }
+}
+[e :U 61 ]
+"182
+[; ;DIO.c: 182:     return pin;
+[e ) _pin ]
+[e $UE 56  ]
+"183
+[; ;DIO.c: 183: }
+[e :UE 56 ]
+}

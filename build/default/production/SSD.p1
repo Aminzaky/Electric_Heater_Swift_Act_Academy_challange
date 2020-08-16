@@ -1,0 +1,322 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"78 ./DIO.h
+[; ;./DIO.h: 78: void DIO_voidInitPort(uint8 Port, uint8 Dir);
+[v _DIO_voidInitPort `(v ~T0 @X0 0 ef2`uc`uc ]
+"99
+[; ;./DIO.h: 99: void DIO_voidInitPin(uint8 pin_num, uint8 Dir);
+[v _DIO_voidInitPin `(v ~T0 @X0 0 ef2`uc`uc ]
+"106
+[; ;./DIO.h: 106: void DIO_voidWritePinValue(uint8 pin_num, uint8 value);
+[v _DIO_voidWritePinValue `(v ~T0 @X0 0 ef2`uc`uc ]
+"85
+[; ;./DIO.h: 85: void DIO_voidWritePortValue(uint8 Port, uint8 value);
+[v _DIO_voidWritePortValue `(v ~T0 @X0 0 ef2`uc`uc ]
+"15 SSD.c
+[; ;SSD.c: 15: void SSD_Init(void) {
+[v _SSD_Init `(v ~T0 @X0 1 ef ]
+{
+[e :U _SSD_Init ]
+[f ]
+"16
+[; ;SSD.c: 16:     DIO_voidInitPort(3, 0);
+[e ( _DIO_voidInitPort (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+"17
+[; ;SSD.c: 17:     DIO_voidInitPin(4, 0);
+[e ( _DIO_voidInitPin (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
+"18
+[; ;SSD.c: 18:     DIO_voidInitPin(5, 0);
+[e ( _DIO_voidInitPin (2 , -> -> 5 `i `uc -> -> 0 `i `uc ]
+"19
+[; ;SSD.c: 19: }
+[e :UE 1 ]
+}
+"21
+[; ;SSD.c: 21: void SSD_Display(uint8 display_no, uint8 number) {
+[v _SSD_Display `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _SSD_Display ]
+[v _display_no `uc ~T0 @X0 1 r1 ]
+[v _number `uc ~T0 @X0 1 r2 ]
+[f ]
+"22
+[; ;SSD.c: 22:     switch (display_no) {
+[e $U 4  ]
+{
+"23
+[; ;SSD.c: 23:         case 0:
+[e :U 5 ]
+"24
+[; ;SSD.c: 24:             DIO_voidWritePinValue(4, 1);
+[e ( _DIO_voidWritePinValue (2 , -> -> 4 `i `uc -> -> 1 `i `uc ]
+"25
+[; ;SSD.c: 25:             DIO_voidWritePinValue(5, 0);
+[e ( _DIO_voidWritePinValue (2 , -> -> 5 `i `uc -> -> 0 `i `uc ]
+"26
+[; ;SSD.c: 26:             switch (number) {
+[e $U 7  ]
+{
+"27
+[; ;SSD.c: 27:                 case 0:
+[e :U 8 ]
+"28
+[; ;SSD.c: 28:                     DIO_voidWritePortValue(3, 0x3F);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 63 `i `uc ]
+"29
+[; ;SSD.c: 29:                     break;
+[e $U 6  ]
+"30
+[; ;SSD.c: 30:                 case 1:
+[e :U 9 ]
+"31
+[; ;SSD.c: 31:                     DIO_voidWritePortValue(3, 0x06);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 6 `i `uc ]
+"32
+[; ;SSD.c: 32:                     break;
+[e $U 6  ]
+"33
+[; ;SSD.c: 33:                 case 2:
+[e :U 10 ]
+"34
+[; ;SSD.c: 34:                     DIO_voidWritePortValue(3, 0x5B);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 91 `i `uc ]
+"35
+[; ;SSD.c: 35:                     break;
+[e $U 6  ]
+"36
+[; ;SSD.c: 36:                 case 3:
+[e :U 11 ]
+"37
+[; ;SSD.c: 37:                     DIO_voidWritePortValue(3, 0x4F);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 79 `i `uc ]
+"38
+[; ;SSD.c: 38:                     break;
+[e $U 6  ]
+"39
+[; ;SSD.c: 39:                 case 4:
+[e :U 12 ]
+"40
+[; ;SSD.c: 40:                     DIO_voidWritePortValue(3, 0x66);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 102 `i `uc ]
+"41
+[; ;SSD.c: 41:                     break;
+[e $U 6  ]
+"42
+[; ;SSD.c: 42:                 case 5:
+[e :U 13 ]
+"43
+[; ;SSD.c: 43:                     DIO_voidWritePortValue(3, 0x6D);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 109 `i `uc ]
+"44
+[; ;SSD.c: 44:                     break;
+[e $U 6  ]
+"45
+[; ;SSD.c: 45:                 case 6:
+[e :U 14 ]
+"46
+[; ;SSD.c: 46:                     DIO_voidWritePortValue(3, 0x7D);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 125 `i `uc ]
+"47
+[; ;SSD.c: 47:                     break;
+[e $U 6  ]
+"48
+[; ;SSD.c: 48:                 case 7:
+[e :U 15 ]
+"49
+[; ;SSD.c: 49:                     DIO_voidWritePortValue(3, 0x07);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 7 `i `uc ]
+"50
+[; ;SSD.c: 50:                     break;
+[e $U 6  ]
+"51
+[; ;SSD.c: 51:                 case 8:
+[e :U 16 ]
+"52
+[; ;SSD.c: 52:                     DIO_voidWritePortValue(3, 0x7F);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 127 `i `uc ]
+"53
+[; ;SSD.c: 53:                     break;
+[e $U 6  ]
+"54
+[; ;SSD.c: 54:                 case 9:
+[e :U 17 ]
+"55
+[; ;SSD.c: 55:                     DIO_voidWritePortValue(3, 0x6F);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 111 `i `uc ]
+"56
+[; ;SSD.c: 56:                     break;
+[e $U 6  ]
+"57
+[; ;SSD.c: 57:             }
+}
+[e $U 6  ]
+[e :U 7 ]
+[e [\ -> _number `i , $ -> 0 `i 8
+ , $ -> 1 `i 9
+ , $ -> 2 `i 10
+ , $ -> 3 `i 11
+ , $ -> 4 `i 12
+ , $ -> 5 `i 13
+ , $ -> 6 `i 14
+ , $ -> 7 `i 15
+ , $ -> 8 `i 16
+ , $ -> 9 `i 17
+ 6 ]
+[e :U 6 ]
+"58
+[; ;SSD.c: 58:             break;
+[e $U 3  ]
+"59
+[; ;SSD.c: 59:         case 1:
+[e :U 18 ]
+"60
+[; ;SSD.c: 60:             DIO_voidWritePinValue(5, 1);
+[e ( _DIO_voidWritePinValue (2 , -> -> 5 `i `uc -> -> 1 `i `uc ]
+"61
+[; ;SSD.c: 61:             DIO_voidWritePinValue(4, 0);
+[e ( _DIO_voidWritePinValue (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
+"62
+[; ;SSD.c: 62:             switch (number) {
+[e $U 20  ]
+{
+"63
+[; ;SSD.c: 63:                 case 0:
+[e :U 21 ]
+"64
+[; ;SSD.c: 64:                     DIO_voidWritePortValue(3, 0x3F);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 63 `i `uc ]
+"65
+[; ;SSD.c: 65:                     break;
+[e $U 19  ]
+"66
+[; ;SSD.c: 66:                 case 1:
+[e :U 22 ]
+"67
+[; ;SSD.c: 67:                     DIO_voidWritePortValue(3, 0x06);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 6 `i `uc ]
+"68
+[; ;SSD.c: 68:                     break;
+[e $U 19  ]
+"69
+[; ;SSD.c: 69:                 case 2:
+[e :U 23 ]
+"70
+[; ;SSD.c: 70:                     DIO_voidWritePortValue(3, 0x5B);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 91 `i `uc ]
+"71
+[; ;SSD.c: 71:                     break;
+[e $U 19  ]
+"72
+[; ;SSD.c: 72:                 case 3:
+[e :U 24 ]
+"73
+[; ;SSD.c: 73:                     DIO_voidWritePortValue(3, 0x4F);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 79 `i `uc ]
+"74
+[; ;SSD.c: 74:                     break;
+[e $U 19  ]
+"75
+[; ;SSD.c: 75:                 case 4:
+[e :U 25 ]
+"76
+[; ;SSD.c: 76:                     DIO_voidWritePortValue(3, 0x66);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 102 `i `uc ]
+"77
+[; ;SSD.c: 77:                     break;
+[e $U 19  ]
+"78
+[; ;SSD.c: 78:                 case 5:
+[e :U 26 ]
+"79
+[; ;SSD.c: 79:                     DIO_voidWritePortValue(3, 0x6D);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 109 `i `uc ]
+"80
+[; ;SSD.c: 80:                     break;
+[e $U 19  ]
+"81
+[; ;SSD.c: 81:                 case 6:
+[e :U 27 ]
+"82
+[; ;SSD.c: 82:                     DIO_voidWritePortValue(3, 0x7D);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 125 `i `uc ]
+"83
+[; ;SSD.c: 83:                     break;
+[e $U 19  ]
+"84
+[; ;SSD.c: 84:                 case 7:
+[e :U 28 ]
+"85
+[; ;SSD.c: 85:                     DIO_voidWritePortValue(3, 0x07);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 7 `i `uc ]
+"86
+[; ;SSD.c: 86:                     break;
+[e $U 19  ]
+"87
+[; ;SSD.c: 87:                 case 8:
+[e :U 29 ]
+"88
+[; ;SSD.c: 88:                     DIO_voidWritePortValue(3, 0x7F);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 127 `i `uc ]
+"89
+[; ;SSD.c: 89:                     break;
+[e $U 19  ]
+"90
+[; ;SSD.c: 90:                 case 9:
+[e :U 30 ]
+"91
+[; ;SSD.c: 91:                     DIO_voidWritePortValue(3, 0x6F);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 111 `i `uc ]
+"92
+[; ;SSD.c: 92:                     break;
+[e $U 19  ]
+"93
+[; ;SSD.c: 93:             }
+}
+[e $U 19  ]
+[e :U 20 ]
+[e [\ -> _number `i , $ -> 0 `i 21
+ , $ -> 1 `i 22
+ , $ -> 2 `i 23
+ , $ -> 3 `i 24
+ , $ -> 4 `i 25
+ , $ -> 5 `i 26
+ , $ -> 6 `i 27
+ , $ -> 7 `i 28
+ , $ -> 8 `i 29
+ , $ -> 9 `i 30
+ 19 ]
+[e :U 19 ]
+"94
+[; ;SSD.c: 94:             break;
+[e $U 3  ]
+"95
+[; ;SSD.c: 95:     }
+}
+[e $U 3  ]
+[e :U 4 ]
+[e [\ -> _display_no `i , $ -> 0 `i 5
+ , $ -> 1 `i 18
+ 3 ]
+[e :U 3 ]
+"96
+[; ;SSD.c: 96: }
+[e :UE 2 ]
+}
+"98
+[; ;SSD.c: 98: void SSD_OFF(void) {
+[v _SSD_OFF `(v ~T0 @X0 1 ef ]
+{
+[e :U _SSD_OFF ]
+[f ]
+"99
+[; ;SSD.c: 99:     DIO_voidWritePinValue(4, 0);
+[e ( _DIO_voidWritePinValue (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
+"100
+[; ;SSD.c: 100:     DIO_voidWritePinValue(5, 0);
+[e ( _DIO_voidWritePinValue (2 , -> -> 5 `i `uc -> -> 0 `i `uc ]
+"101
+[; ;SSD.c: 101:     DIO_voidWritePortValue(3, 0x00);
+[e ( _DIO_voidWritePortValue (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
+"102
+[; ;SSD.c: 102: }
+[e :UE 31 ]
+}

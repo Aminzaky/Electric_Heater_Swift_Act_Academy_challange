@@ -1,0 +1,44 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"99 ./DIO.h
+[; ;./DIO.h: 99: void DIO_voidInitPin(uint8 pin_num, uint8 Dir);
+[v _DIO_voidInitPin `(v ~T0 @X0 0 ef2`uc`uc ]
+"106
+[; ;./DIO.h: 106: void DIO_voidWritePinValue(uint8 pin_num, uint8 value);
+[v _DIO_voidWritePinValue `(v ~T0 @X0 0 ef2`uc`uc ]
+"16 DO.c
+[; ;DO.c: 16: void DO_Init(void) {
+[v _DO_Init `(v ~T0 @X0 1 ef ]
+{
+[e :U _DO_Init ]
+[f ]
+"17
+[; ;DO.c: 17:     DIO_voidInitPin(11, 0);
+[e ( _DIO_voidInitPin (2 , -> -> 11 `i `uc -> -> 0 `i `uc ]
+"18
+[; ;DO.c: 18:     DIO_voidInitPin(21, 0);
+[e ( _DIO_voidInitPin (2 , -> -> 21 `i `uc -> -> 0 `i `uc ]
+"19
+[; ;DO.c: 19:     DIO_voidInitPin(18, 0);
+[e ( _DIO_voidInitPin (2 , -> -> 18 `i `uc -> -> 0 `i `uc ]
+"20
+[; ;DO.c: 20:     (*((uint8*)(0x86))&=0x0F);
+[e =& *U -> -> 134 `i `*uc -> -> 15 `i `uc ]
+"21
+[; ;DO.c: 21: }
+[e :UE 1 ]
+}
+"24
+[; ;DO.c: 24: void DO_SetState(uint8 device, uint8 state) {
+[v _DO_SetState `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _DO_SetState ]
+[v _device `uc ~T0 @X0 1 r1 ]
+[v _state `uc ~T0 @X0 1 r2 ]
+[f ]
+"25
+[; ;DO.c: 25:     DIO_voidWritePinValue(device, state);
+[e ( _DIO_voidWritePinValue (2 , _device _state ]
+"26
+[; ;DO.c: 26: }
+[e :UE 2 ]
+}
